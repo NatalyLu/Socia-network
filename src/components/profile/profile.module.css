@@ -1,0 +1,19 @@
+
+.profile {
+  margin-bottom: 100px;
+}
+
+.profile__img {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 50px;
+}
+
+.profile__user {
+  margin-bottom: 50px;
+}
+
+.profile__avatar {
+  width: 150px;
+  height: 150px;
+}

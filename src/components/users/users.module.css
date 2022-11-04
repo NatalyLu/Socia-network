@@ -1,0 +1,21 @@
+.users {
+  margin-bottom: 30px;
+}
+
+.users__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user:not(last-child) {
+  margin-bottom: 30px;
+}
+
+.user__img {
+  border-radius: 50%;
+}
+
+.users__paginaion {
+  
+}

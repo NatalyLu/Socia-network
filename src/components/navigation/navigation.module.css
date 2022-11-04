@@ -1,0 +1,32 @@
+.nav {
+  grid-area: n;
+  background-color: #e7aa10;
+  padding: 20px;
+}
+
+.nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__list li:not(:last-child){
+  margin-bottom: 20px;
+}
+
+.nav__link {
+  display: block;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color .12s linear;
+}
+
+.nav__link:hover,
+.nav__link:focus {
+  color: #5a4d23;
+}
+
+.nav__link.active {
+  color: #a18f27;
+}

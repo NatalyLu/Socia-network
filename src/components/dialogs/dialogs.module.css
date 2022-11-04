@@ -1,0 +1,52 @@
+.dialogs {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 6fr;
+}
+
+.dialogs__users {
+  list-style: none;
+  margin: 0 0 50px;
+  padding: 0;
+}
+
+.dialogs__messages {
+  margin-bottom: 50px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.messages__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 50px;
+}
+
+.dialogs__users li:not(:last-child),
+.messages__list li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.dialogs__name {
+  color: #5a4d23;
+  text-decoration: none;
+}
+
+.dialogs__name:hover,
+.dialogs__name:focus {
+  color: #a18f27;
+}
+
+.dialogs__name.active {
+  color: #e7aa10;
+}
+
+.messages__new {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
