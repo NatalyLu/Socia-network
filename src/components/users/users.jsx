@@ -1,13 +1,30 @@
+import React from 'react';
 import styles from './users.module.css';
 import user from "../../images/user.jpg";
-import React from 'react';
 import { MAX_PAGES_COUNT } from '../../const';
 import { NavLink } from 'react-router-dom';
+import { createFollow, deleteFollow } from '../../api/api';
 
 const Users = (props) => {
 
   const followClickHandler = (status, id) => {
-    status ? props.unfollow(id) : props.follow(id);
+    props.toggleFollowingInProgress(true, id);
+    if(status) {
+      deleteFollow(id).then(data => {
+        // если resultCode = 0 => всё ок
+        if (data.resultCode === 0) {
+          props.unfollow(id);
+        }
+        props.toggleFollowingInProgress(false, id);
+      }); 
+    } else {
+      createFollow(id).then(data => {
+        if (data.resultCode === 0) {
+          props.follow(id);
+        }
+        props.toggleFollowingInProgress(false, id);
+      });
+    }
   }
 
   let pagesCount = Math.ceil(props.usersCount / props.pageSize);
@@ -39,7 +56,7 @@ const Users = (props) => {
                 height="50"
               ></img>
             </NavLink>
-            <button className='secondary' onClick={() => followClickHandler(u.followed, u.id)}>{u.followed ? 'Followed' : 'Unfollowed'}</button>
+            <button className='secondary' onClick={() => followClickHandler(u.followed, u.id)} disabled={props.followingInProgress.some(id => id === u.id)} >{u.followed ? 'Followed' : 'Unfollowed'}</button>
           </div>
           <div>
             <span>{u.name}</span>
