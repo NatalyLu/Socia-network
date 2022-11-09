@@ -1,20 +1,14 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import Profile from './profile';
-import {setUserProfile} from '../../redux/profile-reducer';
+import {getProfileThunkCreator} from '../../redux/profile-reducer';
 import { useParams } from 'react-router-dom';
-import { getProfile } from '../../api/api';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let id = this.props.param.id;
     if (!id) {id = 2;}
-    debugger;
-    // this.props.toggleIsFetching(true);
-    getProfile(id).then(data => {
-        this.props.setUserProfile(data);
-        // this.props.toggleIsFetching(false);
-      }); 
+    this.props.getProfile(id);
   }
 
   render() {
@@ -29,9 +23,10 @@ const TakeParams = (props) => {
 }
 
 let mapStateToProps = (state) => ({
-  profile: state.profile.profile
+  profile: state.profile.profile,
+  isFetchingProfile: state.profile.isFetchingProfile
 })
 
-const ProfileWrapper = connect(mapStateToProps,{setUserProfile})(TakeParams);
+const ProfileWrapper = connect(mapStateToProps,{getProfile: getProfileThunkCreator})(TakeParams);
 
 export default ProfileWrapper

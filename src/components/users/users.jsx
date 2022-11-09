@@ -3,27 +3,14 @@ import styles from './users.module.css';
 import user from "../../images/user.jpg";
 import { MAX_PAGES_COUNT } from '../../const';
 import { NavLink } from 'react-router-dom';
-import { createFollow, deleteFollow } from '../../api/api';
 
 const Users = (props) => {
 
   const followClickHandler = (status, id) => {
-    props.toggleFollowingInProgress(true, id);
     if(status) {
-      deleteFollow(id).then(data => {
-        // если resultCode = 0 => всё ок
-        if (data.resultCode === 0) {
-          props.unfollow(id);
-        }
-        props.toggleFollowingInProgress(false, id);
-      }); 
+      props.unfollow(id);
     } else {
-      createFollow(id).then(data => {
-        if (data.resultCode === 0) {
-          props.follow(id);
-        }
-        props.toggleFollowingInProgress(false, id);
-      });
+      props.follow(id);
     }
   }
 

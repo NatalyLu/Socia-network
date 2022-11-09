@@ -14,24 +14,25 @@ export const usersAPI = {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`)
       .then((response) => response.data);
   },
+  deleteFollow(id) {
+    return instance.delete(`follow/${id}`)
+      .then(response => response.data);
+  },
+
+  createFollow(id) {
+    return instance.post(`follow/${id}`)
+      .then(response => response.data);
+  },
+
+  getProfile(id) {
+    return instance.get(`profile/${id}`)
+      .then((response) => response.data);
+  },
 }
 
-export const getProfile = (id) => {
-  return instance.get(`profile/${id}`)
-    .then((response) => response.data);
-};
-
-export const getAuth = () => {
-  return axios.get(`auth/me`)
-    .then(response => response.data);
-};
-
-export const deleteFollow = (id) => {
-  return instance.delete(`follow/${id}`)
-    .then(response => response.data);
-};
-
-export const createFollow = (id) => {
-  return instance.post(`follow/${id}`)
-    .then(response => response.data);
-};
+export const authAPI = {
+  getAuth() {
+    return instance.get(`auth/me`)
+      .then((response) => response.data);
+  },
+}
