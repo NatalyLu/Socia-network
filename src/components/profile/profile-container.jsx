@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import { compose } from 'redux';
 import Profile from './profile';
 import {getProfileThunkCreator} from '../../redux/profile-reducer';
-import { useParams } from 'react-router-dom';
 import { withAuthRedirect } from '../../hoc/with-auth-redirect';
+import { withUrlParams } from '../../hoc/with-url-params';
 
 class ProfileWrapper extends React.Component {
   componentDidMount() {
-    let id = this.props.param.id;
+    let id = this.props.params.id;
     if (!id) {id = 2;}
     this.props.getProfile(id);
   }
@@ -19,17 +20,13 @@ class ProfileWrapper extends React.Component {
   }
 };
 
-let AuthRedirectComponent = withAuthRedirect(ProfileWrapper);
-
-const TakeParams = (props) => {
-  return <AuthRedirectComponent {...props} param={useParams()}/>
-}
-
 let mapStateToProps = (state) => ({
   profile: state.profile.profile,
   isFetchingProfile: state.profile.isFetchingProfile,
-})
+});
 
-const ProfileContainer = connect(mapStateToProps,{getProfile: getProfileThunkCreator})(TakeParams);
-
-export default ProfileContainer
+export default compose(
+  connect(mapStateToProps,{getProfile: getProfileThunkCreator}),
+  withUrlParams,
+  withAuthRedirect
+)(ProfileWrapper)

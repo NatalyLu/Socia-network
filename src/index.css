@@ -57,6 +57,12 @@ code {
 
 .pagination__item {
   padding: 10px;
+  cursor: pointer;
+}
+
+.pagination__item:hover,
+.pagination__item:focus {
+  opacity: .5;
 }
 
 .pagination__item--current {

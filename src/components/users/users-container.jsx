@@ -1,8 +1,10 @@
-import { setCurrentPage, getUsersThunkCreator, followThunkCreator, unfollowThunkCreator } from "../../redux/users-reducer";
 import { connect } from 'react-redux';
 import React from 'react';
+import { compose } from "redux";
+import { setCurrentPage, getUsersThunkCreator, followThunkCreator, unfollowThunkCreator } from "../../redux/users-reducer";
 import Users from './users';
 import Loader from "../loader/loader";
+import { withAuthRedirect } from "../../hoc/with-auth-redirect";
 
 class UsersAPI extends React.Component {
   componentDidMount() { 
@@ -74,11 +76,11 @@ const mapStateToProps = (state) => {
 // // переименовав toggleIsFetchingActionCreator в toggleIsFetching можем использовать это сокращение при образении к mapDispatchToProps
 // }
 
-
-const UsersContainer = connect(mapStateToProps, {
+export default compose(
+  // withAuthRedirect,
+  connect(mapStateToProps, {
     setCurrentPage,
     getUsers: getUsersThunkCreator,
     follow: followThunkCreator,
-    unfollow: unfollowThunkCreator})(UsersAPI);
-
-export default UsersContainer;
+    unfollow: unfollowThunkCreator}),
+)(UsersAPI);
