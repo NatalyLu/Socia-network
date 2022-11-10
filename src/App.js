@@ -17,7 +17,7 @@ const App = () => {
       <main className="app__main">
         <Routes>
           <Route path="/dialogs" element={<DialogsContainer />} />
-          <Route path="/profile/:id?" element={<ProfileContainer />} />
+          <Route path="/profile/:id" element={<ProfileContainer />} />
           <Route path="/users" element={<UsersContainer />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<div>404 Page not found</div>} />

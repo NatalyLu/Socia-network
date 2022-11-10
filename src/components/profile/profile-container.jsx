@@ -3,7 +3,7 @@ import React from 'react';
 import { compose } from 'redux';
 import Profile from './profile';
 import {getProfileThunkCreator} from '../../redux/profile-reducer';
-import { withAuthRedirect } from '../../hoc/with-auth-redirect';
+// import { withAuthRedirect } from '../../hoc/with-auth-redirect';
 import { withUrlParams } from '../../hoc/with-url-params';
 
 class ProfileWrapper extends React.Component {
@@ -28,5 +28,5 @@ let mapStateToProps = (state) => ({
 export default compose(
   connect(mapStateToProps,{getProfile: getProfileThunkCreator}),
   withUrlParams,
-  withAuthRedirect
+  // withAuthRedirect
 )(ProfileWrapper)

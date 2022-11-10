@@ -12,13 +12,6 @@ const Profile = (props) => {
         ? <Loader /> 
         : props.profile 
             ? <>
-                <img
-                  className={s.profile__img}
-                  src={img}
-                  alt="Lions"
-                  width="256"
-                  height="171"
-                ></img>
                 <ProfileInfo styles={s} profile={props.profile} />
                 <PostsContainer />
               </>

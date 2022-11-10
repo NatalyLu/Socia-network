@@ -1,4 +1,5 @@
 import user from "../../../images/user.jpg";
+import ProfileStatus from "../profile-status/profile-status";
 
 const ProfileInfo = (props) => {
   const {styles, profile} = props;
@@ -11,7 +12,7 @@ const ProfileInfo = (props) => {
         width="256"
         height="171"
       ></img>
-      Description
+      <ProfileStatus status="Hey" />
     </div>
   );
 };
