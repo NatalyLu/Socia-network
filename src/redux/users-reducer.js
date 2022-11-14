@@ -74,34 +74,31 @@ export const toggleFollowingInProgress = (value, id) => ({type: Actions.TOGGLE_I
 export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
   dispatch(toggleIsFetching(true));
 
-  usersAPI
-    .getUsers(currentPage, pageSize)
-    .then((data) => {
-      dispatch(setUsers(data.items));
-      dispatch(setTotalUsersCount(data.totalCount));
-      dispatch(toggleIsFetching(false));
-    });
+  usersAPI.getUsers(currentPage, pageSize).then((response) => {
+    dispatch(setUsers(response.data.items));
+    dispatch(setTotalUsersCount(response.data.totalCount));
+    dispatch(toggleIsFetching(false));
+  });
 };
 
 export const unfollowThunkCreator = (id) => (dispatch) => {
   dispatch(toggleFollowingInProgress(true, id));
 
-  usersAPI
-    .deleteFollow(id).then((data) => {
-      // если resultCode = 0 => всё ок
-      if (data.resultCode === 0) {
-        dispatch(unfollowSuccess(id));
-      }
-      dispatch(toggleFollowingInProgress(false, id));
-    }); 
+  usersAPI.deleteFollow(id).then((response) => {
+    // если resultCode = 0 => всё ок
+    if (response.data.resultCode === 0) {
+      dispatch(unfollowSuccess(id));
+    }
+    dispatch(toggleFollowingInProgress(false, id));
+  }); 
 };
 
 export const followThunkCreator = (id) => (dispatch) => {
   dispatch(toggleFollowingInProgress(true, id));
 
-  usersAPI.createFollow(id).then((data) => {
+  usersAPI.createFollow(id).then((response) => {
     // если resultCode = 0 => всё ок
-    if (data.resultCode === 0) {
+    if (response.data.resultCode === 0) {
       dispatch(followSuccess(id));
     }
     dispatch(toggleFollowingInProgress(false, id));
