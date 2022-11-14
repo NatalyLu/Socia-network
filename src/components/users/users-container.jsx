@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import React from 'react';
+import { connect } from "react-redux";
+import React from "react";
 import { compose } from "redux";
 import { setCurrentPage, getUsersThunkCreator, followThunkCreator, unfollowThunkCreator } from "../../redux/users-reducer";
-import Users from './users';
+import Users from "./users";
 import Loader from "../loader/loader";
 import { withAuthRedirect } from "../../hoc/with-auth-redirect";
 
@@ -69,7 +69,7 @@ const mapStateToProps = (state) => {
 //   }
 // };
 
-// let name = 'v';
+// let name = "v";
 // let obj = {
 //   name: name, // тоже самое, что 
 //   //name => сокращение, значит мы создадим свойство name со значением из переменной name

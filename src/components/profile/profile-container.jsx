@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
-import React from 'react';
-import { compose } from 'redux';
-import Profile from './profile';
-import {getProfileThunkCreator} from '../../redux/profile-reducer';
-// import { withAuthRedirect } from '../../hoc/with-auth-redirect';
-import { withUrlParams } from '../../hoc/with-url-params';
+import { connect } from "react-redux";
+import React from "react";
+import { compose } from "redux";
+import Profile from "./profile";
+import {getProfileThunkCreator} from "../../redux/profile-reducer";
+// import { withAuthRedirect } from "../../hoc/with-auth-redirect";
+import { withUrlParams } from "../../hoc/with-url-params";
 
 class ProfileWrapper extends React.Component {
   componentDidMount() {

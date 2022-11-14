@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import s from './header.module.css';
+import { NavLink } from "react-router-dom";
+import s from "./header.module.css";
 
 const Header = (props) => {
   return (
@@ -23,7 +23,7 @@ const Header = (props) => {
       <div className={s.header__login}>
         {props.isAuth
           ? props.login
-          : <NavLink to={'/login'}>Login</NavLink>
+          : <NavLink to={"/login"}>Login</NavLink>
         }
       </div>
     </header>

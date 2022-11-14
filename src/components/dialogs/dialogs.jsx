@@ -1,6 +1,6 @@
-import s from './dialogs.module.css';
-import Dialog from './dialog/dialog';
-import Messages from './messages/messages';
+import s from "./dialogs.module.css";
+import Dialog from "./dialog/dialog";
+import Messages from "./messages/messages";
 
 const Dialogs = (props) => {
   const {newMessage} = props.newMessage;
@@ -20,11 +20,11 @@ const Dialogs = (props) => {
         <Messages messages={props.dialogs.messages} />
         <div className={s.messages__new}>
           <textarea
-            className='textarea'
+            className="textarea"
             value={newMessage}
             onChange={(evt) => {messageChangeHandler(evt)}}
-            placeholder='Enter your message'></textarea>
-          <button type="submit" className='submit' onClick={sendMessageClickHandler}>Send</button>
+            placeholder="Enter your message"></textarea>
+          <button type="submit" className="submit" onClick={sendMessageClickHandler}>Send</button>
         </div>
       </div>
     </div>

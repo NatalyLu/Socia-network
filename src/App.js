@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import './App.css';
+import "./App.css";
 import DialogsContainer from "./components/dialogs/dialogs-container";
 import HeaderContainer from "./components/header/header-container";
 import Login from "./components/login/login";
-import Navigation from './components/navigation/navigation';
+import Navigation from "./components/navigation/navigation";
 import ProfileContainer from "./components/profile/profile-container";
 import UsersContainer from "./components/users/users-container";
 

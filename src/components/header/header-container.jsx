@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Header from './header';
-import {getAuthThunkCreator} from '../../redux/auth-reducer'
+import React from "react";
+import { connect } from "react-redux";
+import Header from "./header";
+import {getAuthThunkCreator} from "../../redux/auth-reducer"
 
 class HeaderAPI extends React.Component {
   componentDidMount() { 

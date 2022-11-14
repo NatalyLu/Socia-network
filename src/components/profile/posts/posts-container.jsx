@@ -1,6 +1,6 @@
-import Posts from './posts';
-import { addPost, updateNewPost } from '../../../redux/profile-reducer';
-import { connect } from 'react-redux';
+import Posts from "./posts";
+import { addPost, updateNewPost } from "../../../redux/profile-reducer";
+import { connect } from "react-redux";
 
 // конектим Posts к стору
 // connect передаст в функцию state из стора, т.е. store.getState();

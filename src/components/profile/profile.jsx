@@ -1,9 +1,8 @@
-import PostsContainer from './posts/posts-container';
-import s from './profile.module.css';
-import img from '../../images/lions.jpg'
-import ProfileInfo from './profile-info/profile-info'
-import Loader from '../loader/loader';
-import ErrorBlock from '../error/error-block';
+import PostsContainer from "./posts/posts-container";
+import s from "./profile.module.css";
+import ProfileInfo from "./profile-info/profile-info"
+import Loader from "../loader/loader";
+import ErrorBlock from "../error/error-block";
 
 const Profile = (props) => {
   return (
