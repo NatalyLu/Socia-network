@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+  baseURL: "https://social-network.samuraijs.com/api/1.0/",
   // разрешаем передачу на сервер наших куков (чтобы кажый раз не подтверждать авторизацию)
   withCredentials: true,
   headers: {
@@ -11,28 +11,43 @@ const instance = axios.create({
 
 export const usersAPI = {
   getUsers(currentPage = 1, pageSize = 1) {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-      .then((response) => response.data);
+    return instance
+      .get(`users?page=${currentPage}&count=${pageSize}`)
+      .then((data) => data);
   },
   deleteFollow(id) {
-    return instance.delete(`follow/${id}`)
-      .then(response => response.data);
+    return instance.delete(`follow/${id}`).then((data) => data);
   },
 
   createFollow(id) {
-    return instance.post(`follow/${id}`)
-      .then(response => response.data);
+    return instance.post(`follow/${id}`).then((data) => data);
   },
 
   getProfile(id) {
-    return instance.get(`profile/${id}`)
-      .then((response) => response.data);
+    console.warn(
+      "usersAPI.getProfile is deprecated. Please use profileAPI.getProfile"
+    );
+    return profileAPI.getProfile(id);
   },
 }
 
 export const authAPI = {
   getAuth() {
     return instance.get(`auth/me`)
-      .then((response) => response.data);
+      .then((data) => data);
   },
 }
+
+export const profileAPI = {
+  getProfile(id) {
+    return instance.get(`profile/${id}`).then((data) => data);
+  },
+  getStatus(id) {
+    return instance.get(`profile/status/${id}`).then((data) => data);
+  },
+  updateStatus(status) {
+    return instance
+      .put("profile/status/", { status: status })
+      .then((data) => data);
+  },
+};

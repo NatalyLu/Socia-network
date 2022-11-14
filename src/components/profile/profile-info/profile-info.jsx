@@ -12,7 +12,7 @@ const ProfileInfo = (props) => {
         width="256"
         height="171"
       ></img>
-      <ProfileStatus status="Hey" />
+      <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
     </div>
   );
 };

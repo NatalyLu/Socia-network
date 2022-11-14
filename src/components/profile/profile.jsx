@@ -11,7 +11,7 @@ const Profile = (props) => {
         ? <Loader /> 
         : props.profile 
             ? <>
-                <ProfileInfo styles={s} profile={props.profile} />
+                <ProfileInfo styles={s} profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
                 <PostsContainer />
               </>
             : <ErrorBlock />

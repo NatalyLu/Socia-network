@@ -4,7 +4,7 @@ import { compose } from "redux";
 import { setCurrentPage, getUsersThunkCreator, followThunkCreator, unfollowThunkCreator } from "../../redux/users-reducer";
 import Users from "./users";
 import Loader from "../loader/loader";
-import { withAuthRedirect } from "../../hoc/with-auth-redirect";
+// import { withAuthRedirect } from "../../hoc/with-auth-redirect";
 
 class UsersAPI extends React.Component {
   componentDidMount() { 
