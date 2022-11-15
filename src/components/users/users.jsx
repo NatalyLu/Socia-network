@@ -1,13 +1,17 @@
-import styles from './users.module.css';
+import React from "react";
+import styles from "./users.module.css";
 import user from "../../images/user.jpg";
-import React from 'react';
-import { MAX_PAGES_COUNT } from '../../const';
-import { NavLink } from 'react-router-dom';
+import { MAX_PAGES_COUNT } from "../../const";
+import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
 
   const followClickHandler = (status, id) => {
-    status ? props.unfollow(id) : props.follow(id);
+    if(status) {
+      props.unfollow(id);
+    } else {
+      props.follow(id);
+    }
   }
 
   let pagesCount = Math.ceil(props.usersCount / props.pageSize);
@@ -22,7 +26,7 @@ const Users = (props) => {
       <ul className={`pagination ${styles.users__paginaion}`}>
         {pages.map(page => <li 
                               key={page.id}
-                              className={`pagination__item ${ page.number === props.currentPage ? 'pagination__item--current' : ''}`}
+                              className={`pagination__item ${ page.number === props.currentPage ? "pagination__item--current" : ""}`}
                               onClick={() => props.pageClickHandler(page.number)}
                             >{page.number}</li>)}
       </ul>
@@ -30,7 +34,7 @@ const Users = (props) => {
         {props.users.map(u => 
         <li className={styles.user} key={u.id}>
           <div>
-            <NavLink to={'/profile/' + u.id}>
+            <NavLink to={"/profile/" + u.id}>
               <img
                 className={styles.user__img}
                 src={u.photos.small != null ? u.photos.small : user}
@@ -39,7 +43,7 @@ const Users = (props) => {
                 height="50"
               ></img>
             </NavLink>
-            <button className='secondary' onClick={() => followClickHandler(u.followed, u.id)}>{u.followed ? 'Followed' : 'Unfollowed'}</button>
+            <button className="secondary" onClick={() => followClickHandler(u.followed, u.id)} disabled={props.followingInProgress.some(id => id === u.id)} >{u.followed ? "Followed" : "Unfollowed"}</button>
           </div>
           <div>
             <span>{u.name}</span>

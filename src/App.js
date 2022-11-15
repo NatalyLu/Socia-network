@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import './App.css';
+import "./App.css";
 import DialogsContainer from "./components/dialogs/dialogs-container";
 import HeaderContainer from "./components/header/header-container";
-import Navigation from './components/navigation/navigation';
+import Login from "./components/login/login";
+import Navigation from "./components/navigation/navigation";
 import ProfileContainer from "./components/profile/profile-container";
 import UsersContainer from "./components/users/users-container";
 
@@ -16,8 +17,9 @@ const App = () => {
       <main className="app__main">
         <Routes>
           <Route path="/dialogs" element={<DialogsContainer />} />
-          <Route path="/profile/:id?" element={<ProfileContainer />} />
+          <Route path="/profile/:id" element={<ProfileContainer />} />
           <Route path="/users" element={<UsersContainer />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<div>404 Page not found</div>} />
         </Routes>
       </main>

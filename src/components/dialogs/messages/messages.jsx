@@ -1,4 +1,4 @@
-import s from '../dialogs.module.css';
+import s from "../dialogs.module.css";
 
 const MessageComponent = (props) => {
   return <li>{props.children}</li>;

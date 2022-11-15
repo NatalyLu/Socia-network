@@ -1,4 +1,5 @@
 import { Actions } from "../const";
+import { usersAPI, profileAPI } from "../api/api";
 
 const pushPost = (state) => {
   let newPost = {
@@ -29,6 +30,8 @@ const initialState = {
   ],
   newPostText: "It",
   profile: null,
+  isFetchingProfile: false,
+  status: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -38,15 +41,46 @@ const profileReducer = (state = initialState, action) => {
     case Actions.UPDATE_NEW_POST_TEXT:
       return updateNewPostText(state, action.text);
     case Actions.SET_USER_PROFILE:
-      return {...state, profile: action.profile};
+      return { ...state, profile: action.profile };
+    case Actions.TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetchingProfile: action.value,
+      };
+    case Actions.SET_STATUS:
+      return { ...state, status: action.status };
     default:
       return state;
   }
 };
 
+export const toggleIsFetching = (value) => ({type: Actions.TOGGLE_IS_FETCHING, value});
 export const addPost = () => ({ type: Actions.ADD_POST });
 export const updateNewPost = (data) => ({type: Actions.UPDATE_NEW_POST_TEXT, text: data,});
 export const setUserProfile = (profile) => ({type: Actions.SET_USER_PROFILE, profile,});
+export const setStatus = (status) => ({type: Actions.SET_STATUS, status,});
+
+export const getProfileThunkCreator = (id) => (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  usersAPI.getProfile(id).then((response) => {
+    dispatch(setUserProfile(response.data));
+    dispatch(toggleIsFetching(false));
+  });
+};
+
+export const getStatus = (id) => (dispatch) => {
+  profileAPI.getStatus(id).then((response) => {
+    dispatch(setStatus(response.data));
+  });
+};
+
+export const updateStatus = (status) => (dispatch) => {
+  profileAPI.updateStatus(status).then((response) => {
+    if (response.data.resultCode === 0) {
+      dispatch(setStatus(status));
+    }
+  });
+};
 
 
 export default profileReducer;

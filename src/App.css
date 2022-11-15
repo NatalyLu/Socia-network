@@ -14,8 +14,8 @@ img {
   grid-template-rows: 60px 1fr;
   grid-template-columns: 200px 1fr;
   grid-template-areas: 
-  'h h'
-  'n c';
+  "h h"
+  "n c";
   grid-gap: 10px;
 }
 

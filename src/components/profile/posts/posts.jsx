@@ -1,7 +1,7 @@
-import React from 'react';
-import Post from './post/post';
-import s from './posts.module.css';
-import avatar from '../../../images/avatar-1.jpg';
+import React from "react";
+import Post from "./post/post";
+import s from "./posts.module.css";
+import avatar from "../../../images/avatar-1.jpg";
 
 const Posts = (props) => {
   let newPost = React.createRef();
@@ -20,12 +20,12 @@ const Posts = (props) => {
     <section className={s.posts}>
       <div className={s.posts__new}>
         <textarea
-          className='textarea'
+          className="textarea"
           ref={newPost}
           value={props.newPostText}
           onChange={postChangeHandler}
         />
-        <button type="submit" className='submit' onClick={addPostsHandler}>Add posts</button>
+        <button type="submit" className="submit" onClick={addPostsHandler}>Add posts</button>
       </div>
       <ul className={s.posts__list}>
         {props.posts.map((item) => <Post key={item.id} link={avatar}>{item.text}</Post>)}
