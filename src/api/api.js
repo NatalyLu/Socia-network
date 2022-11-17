@@ -33,10 +33,17 @@ export const usersAPI = {
 
 export const authAPI = {
   getAuth() {
-    return instance.get(`auth/me`)
+    return instance.get("auth/me").then((data) => data);
+  },
+  login(email, password, rememberMe = false) {
+    return instance
+      .post("/auth/login", { email, password, rememberMe })
       .then((data) => data);
   },
-}
+  logout() {
+    return instance.delete("/auth/login")
+  },
+};
 
 export const profileAPI = {
   getProfile(id) {

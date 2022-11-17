@@ -1,7 +1,11 @@
 import {useForm} from "react-hook-form";
+import { connect } from "react-redux";
+import { InputSymbols } from "../../const";
 import s from "./login.module.css";
+import {loginThunkCreator, logoutThunkCreator} from "../../redux/auth-reducer";
+import { Navigate } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const {
     register,
     handleSubmit,
@@ -11,39 +15,48 @@ const LoginForm = () => {
     mode: "onChange"
   });
 
-  const ButtonClickHandle = (data) => {
-    console.log(data);
+  const FormSubmitClickHandle = (data) => {
+    props.login(data.email, data.password, data.rememberMe);
     reset();
   };
 
   return(
-    <form className={s.form} onSubmit={handleSubmit(ButtonClickHandle)}>
-      <label className={s.form__input}>
-        Enter your login
-        <input {...register("login", { required: true })} type="text" placeholder="Login"></input>
-        {errors.login && <p className="error">Login is required.</p>}
+    <form className={s.login} onSubmit={handleSubmit(FormSubmitClickHandle)}>
+      <label className={s.login__label}>
+        Enter your email
+        <input className={`${s.login__input} ${errors.email ? "error" : ""}`} {...register("email", { required: true })} type="email" placeholder="Email"></input>
+        {errors.email && <p className="text-error">Email is required.</p>}
       </label>
-      <label className={s.form__input}>
+      <label className={s.login__label}>
         Enter your password
-        <input {...register("password", { required: true, minLength: 5 })} type="password" placeholder="Password"></input>
-        {errors.password && <p className="error">Password is required and must contain at least 5 symbols</p>}
+        <input className={`${s.login__input} ${errors.password ? "error" : ""}`} {...register("password", { required: true, minLength: InputSymbols.MIN, maxLength: InputSymbols.MAX })} type="password" placeholder="Password"></input>
+        {errors.password && <p className="text-error">Password is required and must contain at least {InputSymbols.MIN} symbols, but no more then {InputSymbols.MAX}</p>}
       </label>
-      <div className={s.form__checkbox}>
-          <input {...register("remember")} type="checkbox" id="remember"></input>
+      <div className={s.login__checkbox}>
+          <input {...register("rememberMe")} type="checkbox" id="remember"></input>
           <label htmlFor="remember">Remember me</label>
       </div>
-      <button className={s.form__submit} type="submit" disabled={!isValid}>Login</button>
+      <button className={s.login__submit} type="submit" disabled={!isValid}>Login</button>
     </form>
   )
 };
 
-const Login = () => {
+const Login = (props) => {
+  if (props.isAuth) {
+    return <Navigate to={`/profile/${props.id}`} />
+  }
+
   return(
     <div>
       <h1>Login</h1>
-      <LoginForm />
+      <LoginForm {...props} />
     </div>
   );
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+  id: state.auth.id
+})
+
+export default connect(mapStateToProps, {login: loginThunkCreator, logout: logoutThunkCreator})(Login);

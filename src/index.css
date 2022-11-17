@@ -22,8 +22,8 @@ code {
   transition: .1s linear;
 }
 
-.submit:hover,
-.submit:focus {
+.submit:not(:disabled):hover,
+.submit:not(:disabled):focus {
   cursor: pointer;
   background-color: rgba(231, 170, 16, .9);
   transform: translate(1px, 1px);
@@ -89,10 +89,20 @@ code {
   }
 }
 
-.error {
+.text-error {
   color: #b21313;
 }
 
 button:disabled {
   opacity: .5;
+}
+
+.input.error,
+.textarea.error {
+  border-color: #b21313;
+}
+
+.textarea:focus,
+.input:focus {
+  outline: none;
 }
