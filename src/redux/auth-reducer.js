@@ -33,9 +33,9 @@ export const setAuthUserData = (id, email, login) => ({ type: Actions.SET_USER_D
 
 export const getAuthThunkCreator = () => (dispatch) => {
   dispatch(toggleIsFetching(true));
-  authAPI.getAuth().then((data) => {
-    if (data.resultCode === 0) {
-      let { login, id, email } = data.data;
+  authAPI.getAuth().then((response) => {
+    if (response.data.resultCode === 0) {
+      let { login, id, email } = response.data.data;
       dispatch(setAuthUserData(id, email, login)); //не забываем про последовательность параметров для setAuthUserData
     }
     dispatch(toggleIsFetching(false));
