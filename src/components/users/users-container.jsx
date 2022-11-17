@@ -46,36 +46,6 @@ const mapStateToProps = (state) => {
   }
 };
 
-// let mapDispatchToProps = (dispatch) => {
-//   return {
-//     followSuccess: (userId) => {
-//       dispatch(followActionCreator(userId));
-//     },
-//     unfollowSuccess: (userId) => {
-//       dispatch(unfollowActionCreator(userId));
-//     },
-//     setUsers: (users) => {
-//       dispatch(setUsersActionCreator(users));
-//     },
-//     setCurrentPage: (page) => {
-//       dispatch(setCurrentPageActionCreator(page));
-//     },
-//     setTotalUsersCount: (count) => {
-//       dispatch(setTotalUsersCountActionCreator(count));
-//     },
-//     toggleIsFetching: (value) => {
-//       dispatch(toggleIsFetchingActionCreator(value));
-//     }
-//   }
-// };
-
-// let name = "v";
-// let obj = {
-//   name: name, // тоже самое, что 
-//   //name => сокращение, значит мы создадим свойство name со значением из переменной name
-// // переименовав toggleIsFetchingActionCreator в toggleIsFetching можем использовать это сокращение при образении к mapDispatchToProps
-// }
-
 export default compose(
   // withAuthRedirect,
   connect(mapStateToProps, {

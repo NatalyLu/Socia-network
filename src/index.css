@@ -88,3 +88,11 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.error {
+  color: #b21313;
+}
+
+button:disabled {
+  opacity: .5;
+}
