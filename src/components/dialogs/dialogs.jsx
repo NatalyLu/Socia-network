@@ -2,6 +2,7 @@ import {useForm} from "react-hook-form";
 import s from "./dialogs.module.css";
 import Dialog from "./dialog/dialog";
 import Messages from "./messages/messages";
+import { DialogSymbols } from "../../const";
 
 const AddMessageForm = (props) => {
   const {
@@ -17,10 +18,10 @@ const AddMessageForm = (props) => {
   return(
     <form onSubmit={handleSubmit(addMessageHandler)} className={s.messages__new}>
       <textarea
-        className="textarea"
-        {...register("newMessage", {required: true, minLength: 1 })}
+        className={`textarea ${errors.newMessage && "error"}`}
+        {...register("newMessage", {required: true, minLength: DialogSymbols.MIN, maxLength:DialogSymbols.MAX })}
         placeholder="Enter your message"></textarea>
-        {errors.newMessage && <p className="error">Message's length must be more then 1 symbols.</p>}
+        {errors.newMessage && <p className="text-error">Message's length must be more then {DialogSymbols.MIN} symbols, but less then {DialogSymbols.MAX}.</p>}
       <button type="submit" className="submit" disabled={!isValid}>Send</button>
     </form>
   )

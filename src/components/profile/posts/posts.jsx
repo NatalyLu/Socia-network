@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import Post from "./post/post";
 import s from "./posts.module.css";
 import avatar from "../../../images/avatar-1.jpg";
+import { TextareaSymbols } from "../../../const";
 
 const AddPostForm = (props) => {
   const {
@@ -10,7 +11,7 @@ const AddPostForm = (props) => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    mode: "onBlur"
+    mode: "onChange"
   });
 
   let addPostHandler = (data) => {
@@ -20,10 +21,10 @@ const AddPostForm = (props) => {
   return(
     <form onSubmit={handleSubmit(addPostHandler)} className={s.posts__new}>
       <textarea
-        className="textarea"
-        {...register("newPost", {required: true, minLength: 50 })}
+        className={`textarea ${errors.newPost && "error"}`}
+        {...register("newPost", {required: true, minLength: TextareaSymbols.MIN, maxLength: TextareaSymbols.MAX })}
       />
-      {errors.newPost && <p className="error">Post's length must be more then 50 symbols.</p>}
+      {errors.newPost && <p className="text-error">Post's length must be more then {TextareaSymbols.MIN} symbols and less then {TextareaSymbols.MAX}.</p>}
       <button type="submit" className="submit" disabled={!isValid}>Add posts</button>
     </form>
   )

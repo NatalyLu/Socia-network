@@ -17,3 +17,18 @@ export const Actions = {
 
 export const MAX_PAGES_COUNT = 5;
 
+export const TextareaSymbols = {
+  MIN: 10,
+  MAX: 50,
+};
+
+export const InputSymbols = {
+  MIN: 5,
+  MAX: 15,
+};
+
+export const DialogSymbols = {
+  MIN: 1,
+  MAX: 50,
+};
+
