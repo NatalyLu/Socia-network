@@ -41,10 +41,16 @@ export const getAuthThunkCreator = () => (dispatch) => {
   });
 };
 
-export const loginThunkCreator = (email, password, rememberMe) => (dispatch) => {
+export const loginThunkCreator = (email, password, rememberMe, setError) => (dispatch) => {
   authAPI.login(email, password, rememberMe).then((response) => {
     if (response.data.resultCode === 0) {
       dispatch(getAuthThunkCreator());
+    } else {
+      setError("server", {
+        message: response.data.messages.length > 0
+          ? response.data.messages[0]
+          : "Some error",
+      });
     }
   });
 };
