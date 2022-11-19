@@ -32,7 +32,7 @@ export const setAuthUserData = (id, email, login, isAuth) => ({ type: Actions.SE
 
 export const getAuthThunkCreator = () => (dispatch) => {
   dispatch(toggleIsFetching(true));
-  authAPI.getAuth().then((response) => {
+  return authAPI.getAuth().then((response) => {
     if (response.data.resultCode === 0) {
       let { login, id, email } = response.data.data;
       dispatch(setAuthUserData(id, email, login, true)); //не забываем про последовательность параметров для setAuthUserData

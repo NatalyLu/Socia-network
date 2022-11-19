@@ -1,39 +1,45 @@
+import { Component } from "react";
+import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import DialogsContainer from "./components/dialogs/dialogs-container";
+import { initializeApp } from "./redux/app-reducer";
 import HeaderContainer from "./components/header/header-container";
-import Login from "./components/login/login";
 import Navigation from "./components/navigation/navigation";
+import DialogsContainer from "./components/dialogs/dialogs-container";
 import ProfileContainer from "./components/profile/profile-container";
 import UsersContainer from "./components/users/users-container";
+import Login from "./components/login/login";
+import Loader from "./components/loader/loader";
 
-const App = () => {
-  // const { dialogs } = props.state;
+class App extends Component {
+  componentDidMount() {
+    this.props.initializeApp();
+  }
 
-  return (
-    <div className="app">
-      <HeaderContainer />
-      <Navigation />
-      <main className="app__main">
-        <Routes>
-          <Route path="/dialogs" element={<DialogsContainer />} />
-          <Route path="/profile/:id" element={<ProfileContainer />} />
-          <Route path="/users" element={<UsersContainer />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<div>404 Page not found</div>} />
-        </Routes>
-      </main>
-    </div>
-  );
+  render() {
+    if (!this.props.initialized) {return (<Loader />)}
+    else {
+      return (
+        <div className="app">
+          <HeaderContainer />
+          <Navigation />
+          <main className="app__main">
+            <Routes>
+              <Route path="/dialogs" element={<DialogsContainer />} />
+              <Route path="/profile/:id" element={<ProfileContainer />} />
+              <Route path="/users" element={<UsersContainer />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="*" element={<div>404 Page not found</div>} />
+            </Routes>
+          </main>
+        </div>
+      );
+    }
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized,
+})
 
-{/* <Route
-            path="/dialogs"
-            element={<Dialogs dialogs={dialogs} dispatch={props.dispatch} />}
-          />
-          <Route
-            path="/profile"
-            element={<Profile profile={profile} dispatch={props.dispatch} />}
-          /> */}
+export default connect(mapStateToProps, { initializeApp })(App);
