@@ -1,42 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-class ProfileStatus extends React.Component {
+const ProfileStatus = (props) => {
+  let [editMode, setEditMode] = useState(false);
+  let [status, setStatus] = useState(props.status);
 
-  state = {
-    editMode: false,
-    status: this.props.status
-  }
+  useEffect( () => {
+    setStatus(props.status);
+  }, [props.status]);
 
-  // либо создаем метод и байндим, либо за нас это сделает стрелочная функция :)
-  activeEditMode = () => {
-    this.setState({editMode: !this.state.editMode})
-    if(this.state.editMode) {
-      this.props.updateStatus(this.state.status)
+  const activeEditMode = () => {
+    setEditMode(!editMode);
+    if(editMode) {
+      props.updateStatus(status)
     }
   }
 
-  statusChangeHandler = (e) => {
-    this.setState({status: e.target.value});
+  const statusChangeHandler = (e) => {
+    setStatus(e.target.value);
   }
 
-  componentDidUpdate = (prevProps) => {
-    if (prevProps.status !== this.props.status) {
-      this.setState({status: this.props.status});
-    }
-  }
-
-  render(){
-    return (
-      <div>
-        {this.state.editMode
-          ? <div>
-              <input autoFocus className="input" onChange={this.statusChangeHandler} onBlur={this.activeEditMode} value={this.state.status}></input>
-            </div>
-          : <span onDoubleClick={this.activeEditMode}>{this.props.status || "No status"}</span>
-        }
-      </div>
-    );
-  }
+  return (
+    <div>
+      {editMode
+        ? <div>
+            <input autoFocus className="input" onChange={statusChangeHandler} onBlur={activeEditMode} value={status}></input>
+          </div>
+        : <span onDoubleClick={activeEditMode}>{props.status || "No status"}</span>
+      }
+    </div>
+  );
 };
 
 export default ProfileStatus;
