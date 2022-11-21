@@ -39,7 +39,7 @@ const usersReducer = (state = initialState, action) => {
     case Actions.SET_CURRENT_PAGE:
       return {
         ...state,
-        currentPage: action.currentPage
+        currentPage: action.page,
       };
     case Actions.SET_TOTAL_USERS_COUNT:
       return {
@@ -66,16 +66,17 @@ const usersReducer = (state = initialState, action) => {
 export const followSuccess = (userId) => ({ type: Actions.FOLLOW, userId });
 export const unfollowSuccess = (userId) => ({ type: Actions.UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: Actions.SET_USERS, users });
-export const setCurrentPage = (currentPage) => ({type: Actions.SET_CURRENT_PAGE, currentPage,});
+export const setCurrentPage = (page) => ({ type: Actions.SET_CURRENT_PAGE, page });
 export const setTotalUsersCount = (count) => ({type: Actions.SET_TOTAL_USERS_COUNT, count});
 export const toggleIsFetching = (value) => ({type: Actions.TOGGLE_IS_FETCHING, value});
 export const toggleFollowingInProgress = (value, id) => ({type: Actions.TOGGLE_IS_FOLLOWING_PROGRESS, value, id});
 
-export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch) => {
+export const getUsersThunkCreator = (page, pageSize) => (dispatch) => {
   dispatch(toggleIsFetching(true));
 
-  usersAPI.getUsers(currentPage, pageSize).then((response) => {
+  usersAPI.getUsers(page, pageSize).then((response) => {
     dispatch(setUsers(response.data.items));
+    dispatch(setCurrentPage(page));
     dispatch(setTotalUsersCount(response.data.totalCount));
     dispatch(toggleIsFetching(false));
   });
