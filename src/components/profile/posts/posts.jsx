@@ -31,7 +31,6 @@ const AddPostForm = (props) => {
 }
 
 const Posts = (props) => {
-
   return(
     <section className={s.posts}>
       <AddPostForm addPost={props.addPost} />

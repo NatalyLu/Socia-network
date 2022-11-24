@@ -29,6 +29,12 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.ADD_POST:
       return pushPost(state, action.post);
+    // DELETE_POST using only for tests
+    case Actions.DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((p) => p.id !== action.postId),
+      };
     case Actions.SET_USER_PROFILE:
       return { ...state, profile: action.profile };
     case Actions.TOGGLE_IS_FETCHING:
@@ -45,6 +51,7 @@ const profileReducer = (state = initialState, action) => {
 
 export const toggleIsFetching = (value) => ({type: Actions.TOGGLE_IS_FETCHING, value});
 export const addPost = (post) => ({ type: Actions.ADD_POST, post });
+export const deletePost = (postId) => ({ type: Actions.DELETE_POST, postId });
 export const setUserProfile = (profile) => ({type: Actions.SET_USER_PROFILE, profile,});
 export const setStatus = (status) => ({type: Actions.SET_STATUS, status,});
 
