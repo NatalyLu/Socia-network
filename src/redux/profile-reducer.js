@@ -37,7 +37,7 @@ const profileReducer = (state = initialState, action) => {
       };
     case Actions.SET_USER_PROFILE:
       return { ...state, profile: action.profile };
-    case Actions.TOGGLE_IS_FETCHING:
+    case Actions.TOGGLE_IS_FETCHING_PROFILE:
       return {
         ...state,
         isFetchingProfile: action.value,
@@ -49,33 +49,32 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const toggleIsFetching = (value) => ({type: Actions.TOGGLE_IS_FETCHING, value});
+export const toggleIsFetching = (value) => ({type: Actions.TOGGLE_IS_FETCHING_PROFILE, value});
 export const addPost = (post) => ({ type: Actions.ADD_POST, post });
 export const deletePost = (postId) => ({ type: Actions.DELETE_POST, postId });
 export const setUserProfile = (profile) => ({type: Actions.SET_USER_PROFILE, profile,});
 export const setStatus = (status) => ({type: Actions.SET_STATUS, status,});
 
-export const getProfileThunkCreator = (id) => (dispatch) => {
+export const getProfileThunkCreator = (id) => async (dispatch) => {
   dispatch(toggleIsFetching(true));
-  usersAPI.getProfile(id).then((response) => {
-    dispatch(setUserProfile(response.data));
-    dispatch(toggleIsFetching(false));
-  });
+  const response = await usersAPI.getProfile(id);
+
+  dispatch(setUserProfile(response.data));
+  dispatch(toggleIsFetching(false));
 };
 
-export const getStatus = (id) => (dispatch) => {
-  profileAPI.getStatus(id).then((response) => {
-    dispatch(setStatus(response.data));
-  });
+export const getStatus = (id) => async (dispatch) => {
+  const response = await profileAPI.getStatus(id);
+
+  dispatch(setStatus(response.data));
 };
 
-export const updateStatus = (status) => (dispatch) => {
-  profileAPI.updateStatus(status).then((response) => {
-    if (response.data.resultCode === 0) {
-      dispatch(setStatus(status));
-    }
-  });
-};
+export const updateStatus = (status) => async (dispatch) => {
+  const response = await profileAPI.updateStatus(status);
 
+  if (response.data.resultCode === 0) {
+    dispatch(setStatus(status));
+  }
+};
 
 export default profileReducer;
