@@ -1,5 +1,5 @@
 import Posts from "./posts";
-import { addPost, updateNewPost } from "../../../redux/profile-reducer";
+import { addPost } from "../../../redux/profile-reducer";
 import { connect } from "react-redux";
 
 // конектим Posts к стору
@@ -14,11 +14,8 @@ let mapStateToProps = (state) => {
 // а тут колбэки, т.е. connect закинет сюда dispatch
 let mapDispatchToProps = (dispatch) => {
   return {
-    updateNewPostText: (text) => {
-      dispatch(updateNewPost(text));
-    },
-    addPost: () => {
-      dispatch(addPost());
+    addPost: (post) => {
+      dispatch(addPost(post));
     }
   }
 };

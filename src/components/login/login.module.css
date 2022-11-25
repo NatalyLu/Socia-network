@@ -1,4 +1,4 @@
-.form {
+.login {
   display: grid;
   gap: 40px;
   max-width: 300px;
@@ -10,30 +10,12 @@
   color: #5a4d23;
 }
 
-.form__input {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form input {
-  font-size: inherit;
-  padding: 0 10px 10px 0;
-  border: none;
-  border-bottom: 3px solid #5a4d23;
-  color: inherit;
-}
-
-.form input::placeholder {
-  color: rgba(90, 77, 35, 0.4);
-}
-
-.form__checkbox label {
+.login__checkbox label {
   position: relative;
   padding-left: 40px;
 }
 
-.form__checkbox label:before {
+.login__checkbox label:before {
   position: absolute;
   content: "";
   width: 20px;
@@ -44,7 +26,7 @@
   border-radius: 5px;
 }
 
-.form__checkbox label:after {
+.login__checkbox label:after {
   opacity: 0;
   position: absolute;
   content: "";
@@ -58,15 +40,15 @@
   transition: opacity .2s;
 }
 
-.form__checkbox input {
+.login__checkbox input {
   display: none;
 }
 
-.form__checkbox input:checked + label:after {
+.login__checkbox input:checked + label:after {
   opacity: 1;
 }
 
-.form__submit {
+.login__submit {
   background-color: #e7aa10;
   color: #fff;
   font-size: inherit;
@@ -74,8 +56,4 @@
   padding: 12px;
   border: none;
   border-radius: 10px;
-}
-
-.form__submit:disabled {
-  opacity: .5;
 }

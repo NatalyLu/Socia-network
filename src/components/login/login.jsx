@@ -1,49 +1,25 @@
-import s from "./login.module.css";
-import {useForm} from "react-hook-form";
+import { Navigate } from "react-router-dom";
+import { connect } from "react-redux";
+import {loginThunkCreator, logoutThunkCreator} from "../../redux/auth-reducer";
+import LoginForm from "./login-form";
+import { PathLinks } from "../../const";
 
-const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    reset,
-  } = useForm({
-    mode: "onChange"
-  });
+const Login = ({isAuth, id, ...props}) => {
+  if (isAuth) {
+    return <Navigate to={`${PathLinks.PROFILE}/${id}`} />
+  }
 
-  const ButtonClickHandle = (data) => {
-    console.log(data);
-    reset();
-  };
-
-  return(
-    <form className={s.form} onSubmit={handleSubmit(ButtonClickHandle)}>
-      <label className={s.form__input}>
-        Enter your login
-        <input {...register("login", { required: true })} type="text" placeholder="Login"></input>
-        {errors.login && <p>Login is required.</p>}
-      </label>
-      <label className={s.form__input}>
-        Enter your password
-        <input {...register("password", { required: true, minLength: 5 })} type="password" placeholder="Password"></input>
-        {errors.password && <p>Password is required and must contain at least 5 symbols</p>}
-      </label>
-      <div className={s.form__checkbox}>
-          <input {...register("remember")} type="checkbox" id="remember"></input>
-          <label htmlFor="remember">Remember me</label>
-      </div>
-      <button className={s.form__submit} type="submit" disabled={!isValid}>Login</button>
-    </form>
-  )
-};
-
-const Login = () => {
   return(
     <div>
       <h1>Login</h1>
-      <LoginForm />
+      <LoginForm {...props} />
     </div>
   );
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+  id: state.auth.id
+})
+
+export default connect(mapStateToProps, {login: loginThunkCreator, logout: logoutThunkCreator})(Login);

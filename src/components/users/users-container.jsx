@@ -4,11 +4,13 @@ import { compose } from "redux";
 import { setCurrentPage, getUsersThunkCreator, followThunkCreator, unfollowThunkCreator } from "../../redux/users-reducer";
 import Users from "./users";
 import Loader from "../loader/loader";
-// import { withAuthRedirect } from "../../hoc/with-auth-redirect";
+import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users-selectors";
+import { withAuthRedirect } from "../../hoc/with-auth-redirect";
 
 class UsersAPI extends React.Component {
   componentDidMount() { 
-    this.props.getUsers(this.props.currentPage, this.props.pageSize);
+    const {currentPage, pageSize} = this.props;
+    this.props.getUsers(currentPage, pageSize);
   }
 
   pageClickHandler = (page) => {
@@ -37,47 +39,17 @@ class UsersAPI extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    usersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingInProgress: state.usersPage.followingInProgress,
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    usersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingInProgress: getFollowingInProgress(state),
   }
 };
 
-// let mapDispatchToProps = (dispatch) => {
-//   return {
-//     followSuccess: (userId) => {
-//       dispatch(followActionCreator(userId));
-//     },
-//     unfollowSuccess: (userId) => {
-//       dispatch(unfollowActionCreator(userId));
-//     },
-//     setUsers: (users) => {
-//       dispatch(setUsersActionCreator(users));
-//     },
-//     setCurrentPage: (page) => {
-//       dispatch(setCurrentPageActionCreator(page));
-//     },
-//     setTotalUsersCount: (count) => {
-//       dispatch(setTotalUsersCountActionCreator(count));
-//     },
-//     toggleIsFetching: (value) => {
-//       dispatch(toggleIsFetchingActionCreator(value));
-//     }
-//   }
-// };
-
-// let name = "v";
-// let obj = {
-//   name: name, // тоже самое, что 
-//   //name => сокращение, значит мы создадим свойство name со значением из переменной name
-// // переименовав toggleIsFetchingActionCreator в toggleIsFetching можем использовать это сокращение при образении к mapDispatchToProps
-// }
-
 export default compose(
-  // withAuthRedirect,
+  withAuthRedirect,
   connect(mapStateToProps, {
     setCurrentPage,
     getUsers: getUsersThunkCreator,

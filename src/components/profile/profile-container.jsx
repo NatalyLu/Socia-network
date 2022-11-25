@@ -3,13 +3,12 @@ import React from "react";
 import { compose } from "redux";
 import Profile from "./profile";
 import {getProfileThunkCreator, getStatus, updateStatus} from "../../redux/profile-reducer";
-// import { withAuthRedirect } from "../../hoc/with-auth-redirect";
+import { withAuthRedirect } from "../../hoc/with-auth-redirect";
 import { withUrlParams } from "../../hoc/with-url-params";
 
 class ProfileWrapper extends React.Component {
   componentDidMount() {
-    let id = this.props.params.id;
-    if (!id) {id = 2;}
+    let id = this.props.params.id || this.props.authorizedUserId;
     this.props.getProfile(id);
     this.props.getStatus(id);
   }
@@ -24,11 +23,13 @@ class ProfileWrapper extends React.Component {
 let mapStateToProps = (state) => ({
   profile: state.profile.profile,
   isFetchingProfile: state.profile.isFetchingProfile,
-  status: state.profile.status
+  status: state.profile.status,
+  authorizedUserId: state.auth.id,
+  isAuth: state.auth.isAuth,
 });
 
 export default compose(
   connect(mapStateToProps,{getProfile: getProfileThunkCreator, getStatus, updateStatus}),
   withUrlParams,
-  // withAuthRedirect
+  withAuthRedirect
 )(ProfileWrapper)

@@ -3,9 +3,3 @@
   margin: 0;
   padding: 0;
 }
-
-.posts__new {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
-}

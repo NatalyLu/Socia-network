@@ -22,8 +22,8 @@ code {
   transition: .1s linear;
 }
 
-.submit:hover,
-.submit:focus {
+.submit:not(:disabled):hover,
+.submit:not(:disabled):focus {
   cursor: pointer;
   background-color: rgba(231, 170, 16, .9);
   transform: translate(1px, 1px);
@@ -50,25 +50,6 @@ code {
   border-radius: 4px;
 }
 
-.pagination {
-  padding: 0;
-  list-style-type: none;
-}
-
-.pagination__item {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.pagination__item:hover,
-.pagination__item:focus {
-  opacity: .5;
-}
-
-.pagination__item--current {
-  font-weight: bold;
-}
-
 .loader {
   width: 25px;
   height: 25px;
@@ -87,4 +68,22 @@ code {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.text-error {
+  color: #b21313;
+}
+
+button:disabled {
+  opacity: .5;
+}
+
+.input.error,
+.textarea.error {
+  border-color: #b21313;
+}
+
+.textarea:focus,
+.input:focus {
+  outline: none;
 }

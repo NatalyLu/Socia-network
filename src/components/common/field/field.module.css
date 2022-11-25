@@ -1,0 +1,25 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input {
+  font-size: inherit;
+  padding: 0 10px 10px 0;
+  border: none;
+  border-bottom: 3px solid #5a4d23;
+  color: inherit;
+}
+
+.input.error {
+  border-color: #b21313;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(90, 77, 35, 0.4);
+}

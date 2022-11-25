@@ -1,17 +1,10 @@
 import { Actions } from "../const";
 
-const sendMessage = (state) => {
-  let body = state.newMessageBody;
-  state.newMessageBody = "";
+const sendMessage = (state, message) => {
   state.messages.push({
     id: state.messages.length + 1,
-    message: body,
+    message: message,
   });
-  return (state);
-};
-
-const updateNewMessageBody = (state, message) => {
-  state.newMessageBody = message;
   return (state);
 };
 
@@ -29,8 +22,6 @@ const initialState = {
     { id: 4, name: "Sasha" },
     { id: 5, name: "Masha" },
   ],
-
-  newMessageBody: "",
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -40,19 +31,13 @@ const dialogsReducer = (state = initialState, action) => {
   };
 
   switch (action.type) {
-    case Actions.UPDATE_NEW_MESSAGE_BODY:
-      return updateNewMessageBody(stateCopy, action.body);
     case Actions.SEND_MESSAGE:
-      return sendMessage(stateCopy);
+      return sendMessage(stateCopy, action.message);
     default:
       return state;
   }
 };
 
-export const sendMessageActionCreator = () => ({ type: Actions.SEND_MESSAGE });
-export const updateNewMessageBodyActionCreator = (data) => ({
-  type: Actions.UPDATE_NEW_MESSAGE_BODY,
-  body: data,
-});
+export const sendMessageActionCreator = (message) => ({ type: Actions.SEND_MESSAGE, message });
 
 export default dialogsReducer;

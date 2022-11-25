@@ -21,6 +21,3 @@ const Profile = (props) => {
 };
 
 export default Profile;
-
-
-// posts={props.profile.posts} dispatch={props.dispatch} newPostText={props.profile.newPostText}
