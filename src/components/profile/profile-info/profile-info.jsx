@@ -1,8 +1,7 @@
 import user from "../../../images/user.jpg";
 import ProfileStatus from "../profile-status/profile-status";
 
-const ProfileInfo = (props) => {
-  const {styles, profile} = props;
+const ProfileInfo = ({styles, profile, status, updateStatus}) => {
   return (
     <div className={styles.profile__user}>
       <img
@@ -12,7 +11,7 @@ const ProfileInfo = (props) => {
         width="256"
         height="171"
       ></img>
-      <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+      <ProfileStatus status={status} updateStatus={updateStatus} />
     </div>
   );
 };

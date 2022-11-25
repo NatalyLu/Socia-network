@@ -2,10 +2,11 @@ import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import {loginThunkCreator, logoutThunkCreator} from "../../redux/auth-reducer";
 import LoginForm from "./login-form";
+import { PathLinks } from "../../const";
 
 const Login = ({isAuth, id, ...props}) => {
   if (isAuth) {
-    return <Navigate to={`/profile/${id}`} />
+    return <Navigate to={`${PathLinks.PROFILE}/${id}`} />
   }
 
   return(

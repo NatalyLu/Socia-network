@@ -50,25 +50,6 @@ code {
   border-radius: 4px;
 }
 
-.pagination {
-  padding: 0;
-  list-style-type: none;
-}
-
-.pagination__item {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.pagination__item:hover,
-.pagination__item:focus {
-  opacity: .5;
-}
-
-.pagination__item--current {
-  font-weight: bold;
-}
-
 .loader {
   width: 25px;
   height: 25px;

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { PathLinks } from "../../const";
 import s from "./header.module.css";
 
 const Logout = (props) => {
@@ -31,7 +32,7 @@ const Header = (props) => {
       <div className={s.header__login}>
         {props.isAuth
           ? <Logout login={props.login} logout={props.logout}/>
-          : <NavLink to={"/login"}>Login</NavLink>
+          : <NavLink to={PathLinks.LOGIN}>Login</NavLink>
         }
       </div>
     </header>
