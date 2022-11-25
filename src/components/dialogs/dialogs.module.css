@@ -44,9 +44,3 @@
 .dialogs__name.active {
   color: #e7aa10;
 }
-
-.messages__new {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 50px;
-}
