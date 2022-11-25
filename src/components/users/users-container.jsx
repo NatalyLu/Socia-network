@@ -5,11 +5,12 @@ import { setCurrentPage, getUsersThunkCreator, followThunkCreator, unfollowThunk
 import Users from "./users";
 import Loader from "../loader/loader";
 import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from "../../redux/users-selectors";
-// import { withAuthRedirect } from "../../hoc/with-auth-redirect";
+import { withAuthRedirect } from "../../hoc/with-auth-redirect";
 
 class UsersAPI extends React.Component {
   componentDidMount() { 
-    this.props.getUsers(this.props.currentPage, this.props.pageSize);
+    const {currentPage, pageSize} = this.props;
+    this.props.getUsers(currentPage, pageSize);
   }
 
   pageClickHandler = (page) => {
@@ -36,17 +37,6 @@ class UsersAPI extends React.Component {
   }
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     users: state.usersPage.users,
-//     pageSize: state.usersPage.pageSize,
-//     usersCount: state.usersPage.totalUsersCount,
-//     currentPage: state.usersPage.currentPage,
-//     isFetching: state.usersPage.isFetching,
-//     followingInProgress: state.usersPage.followingInProgress,
-//   }
-// };
-
 const mapStateToProps = (state) => {
   return {
     users: getUsers(state),
@@ -59,7 +49,7 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-  // withAuthRedirect,
+  withAuthRedirect,
   connect(mapStateToProps, {
     setCurrentPage,
     getUsers: getUsersThunkCreator,
