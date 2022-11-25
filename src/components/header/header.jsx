@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom";
 import s from "./header.module.css";
 
+const Logout = (props) => {
+  return(
+    <>
+      <span>{props.login}</span><button type="button" className="submit" onClick={props.logout}>Log out</button>
+    </>
+  );
+}
+
 const Header = (props) => {
   return (
     <header className={s.header}>
@@ -22,7 +30,7 @@ const Header = (props) => {
       </a>
       <div className={s.header__login}>
         {props.isAuth
-          ? <span>{props.login} - <button type="button" onClick={props.logout} >Log out</button></span>
+          ? <Logout login={props.login} logout={props.logout}/>
           : <NavLink to={"/login"}>Login</NavLink>
         }
       </div>

@@ -2,6 +2,7 @@
   grid-area: h;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header__logo {
@@ -18,4 +19,13 @@
 .header__login a {
   color: #e7aa10;
   text-decoration: none;
+}
+
+.header__login {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  align-items: center;
+  align-content: center;
+  justify-items: end;
 }
