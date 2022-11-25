@@ -1,22 +1,7 @@
 import {useForm} from "react-hook-form";
-import { InputSymbols } from "../../const";
+import { Errors, InputSymbols } from "../../const";
+import Field from "../common/field/field";
 import s from "./login.module.css";
-
-const Field = ({children, errors, registerObj, placeholder, fieldName, clearErrors, errorMessage}) => {
-  return(
-    <label className={s.login__label}>
-      {children}
-      <input
-        className={`${s.login__input} ${errors[fieldName] ? "error" : ""}`}
-        {...registerObj}
-        onFocus={() => {clearErrors()}}
-        type={fieldName}
-        placeholder={placeholder}
-      ></input>
-      {errors[fieldName] && <p className="text-error">{errors[fieldName].message || errorMessage || "Please enter a valid data"}</p>}
-    </label>
-  )
-}
 
 const LoginForm = ({login}) => {
   const {
@@ -31,7 +16,7 @@ const LoginForm = ({login}) => {
   });
 
   const FormSubmitClickHandle = (data) => {
-    login(data.email, data.password, data.rememberMe,setError);
+    login(data.email, data.password, data.rememberMe, setError);
     reset();
   };
 
@@ -49,13 +34,13 @@ const LoginForm = ({login}) => {
     minLength: InputSymbols.MIN,
     maxLength: InputSymbols.MAX
   })};
-  const passwordErrorMessage = `Password is required and must contain at least ${InputSymbols.MIN} symbols, but no more then ${InputSymbols.MAX}`;
+  
 
 return(
     <form className={s.login} onSubmit={handleSubmit(FormSubmitClickHandle)}>
       <Field errors={errors} registerObj={emailRegisterObj} placeholder="Email" fieldName={fieldEmailName} clearErrors={clearErrors}>Enter your email</Field>
 
-      <Field errors={errors} registerObj={passwordRegisterObj} placeholder="Password" fieldName={fieldPasswordName} clearErrors={clearErrors} errorMessage={passwordErrorMessage}>Enter your password</Field>
+      <Field errors={errors} registerObj={passwordRegisterObj} placeholder="Password" fieldName={fieldPasswordName} clearErrors={clearErrors} errorMessage={Errors.PASSWORD_ERROR}>Enter your password</Field>
 
       <div className={s.login__checkbox}>
           <input {...register("rememberMe")} type="checkbox" id="remember"></input>
