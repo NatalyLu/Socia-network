@@ -1,7 +1,8 @@
 import { Component } from "react";
-import { connect } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { connect, Provider } from "react-redux";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
+import store from "./redux/redux-store";
 import { initializeApp } from "./redux/app-reducer";
 import HeaderContainer from "./components/header/header-container";
 import Navigation from "./components/navigation/navigation";
@@ -11,7 +12,7 @@ import UsersContainer from "./components/users/users-container";
 import Login from "./components/login/login";
 import Loader from "./components/loader/loader";
 
-class App extends Component {
+class MainApp extends Component {
   componentDidMount() {
     this.props.initializeApp();
   }
@@ -42,4 +43,18 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized,
 })
 
-export default connect(mapStateToProps, { initializeApp })(App);
+const AppContainer = connect(mapStateToProps, { initializeApp })(MainApp);
+
+const App = () => {
+  // <React.StrictMode>
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  );
+  // </React.StrictMode>
+}
+
+export default App
