@@ -1,9 +1,13 @@
 .pagination {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, max-content));
   padding: 0;
   list-style-type: none;
 }
 
 .pagination__item {
+  display: flex;
+  justify-content: center;
   padding: 10px;
   cursor: pointer;
 }

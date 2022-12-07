@@ -1,3 +1,11 @@
+html {
+  font-size: 16px;
+}
+
+img {
+  object-fit: cover;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -13,6 +21,7 @@ code {
 }
 
 .submit {
+  font-size: 1rem;
   align-self: flex-start;
   padding: 7px 20px;
   background-color: #e7aa10;
@@ -30,7 +39,28 @@ code {
   box-shadow: none;
 }
 
+.primary {
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #a18f27;
+  border: none;
+  box-shadow: 1px 1px 2px 0 #5a4d23;
+  border-radius: 4px;
+  padding: 7px 20px;
+  transition: .1s linear;
+}
+
+.primary:not(:disabled):hover,
+.primary:not(:disabled):focus {
+  cursor: pointer;
+  background-color: #e7aa10;
+  color: #5a4d23;
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
 .secondary {
+  font-size: 1rem;
   background-color: #fff;
   border: 1px solid #e8e3e3;
   padding: 5px 10px;
