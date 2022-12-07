@@ -21,7 +21,7 @@ export const Actions = {
   SET_USER_DATA: "auth/SET_USER_DATA",
 };
 
-export const MAX_PAGES_COUNT = 5;
+export const PORTION_OF_PAGES = 10;
 
 export const TextareaSymbols = {
   MIN: 10,

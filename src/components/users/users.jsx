@@ -6,7 +6,7 @@ import User from "./user";
 const Users = ({currentPage, pageClickHandler, usersCount, pageSize, follow, unfollow, users, followingInProgress}) => {
   return(
     <div className={s.users}>
-      <Paginator currentPage={currentPage} pageClickHandler={pageClickHandler} usersCount={usersCount} pageSize={pageSize} />
+      <Paginator currentPage={currentPage} pageClickHandler={pageClickHandler} itemsCount={usersCount} pageSize={pageSize} />
     
       <ul className={s.users__list}>
         {users.map(u => 
