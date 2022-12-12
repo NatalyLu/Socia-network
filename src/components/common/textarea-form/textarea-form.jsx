@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {useForm} from "react-hook-form";
 import s from "./textarea-form.module.css";
 
@@ -5,11 +6,22 @@ const TextareaForm = ({submitHandler, fieldName, registerObj, placeholder, error
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitSuccessful },
+    reset,
   } = useForm({mode: mode});
 
+  const formSubmitHandler = (data) => {
+    submitHandler(data);
+  }
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
+
   return(
-    <form onSubmit={handleSubmit(submitHandler)} className={s.form}>
+    <form onSubmit={handleSubmit(formSubmitHandler)} className={s.form}>
       <textarea
         className={`textarea ${errors[fieldName] && "error"}`}
         {...register(fieldName , {...registerObj})}

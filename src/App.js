@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Suspense, Component } from "react";
 import { connect, Provider } from "react-redux";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
@@ -6,11 +6,12 @@ import store from "./redux/redux-store";
 import { initializeApp } from "./redux/app-reducer";
 import HeaderContainer from "./components/header/header-container";
 import Navigation from "./components/navigation/navigation";
-import DialogsContainer from "./components/dialogs/dialogs-container";
-import ProfileContainer from "./components/profile/profile-container";
-import UsersContainer from "./components/users/users-container";
-import Login from "./components/login/login";
 import Loader from "./components/loader/loader";
+
+const DialogsContainer = React.lazy(() => import("./components/dialogs/dialogs-container"));
+const ProfileContainer = React.lazy(() => import("./components/profile/profile-container"));
+const UsersContainer = React.lazy(() => import("./components/users/users-container"));
+const Login = React.lazy(() => import("./components/login/login"));
 
 class MainApp extends Component {
   componentDidMount() {
@@ -25,13 +26,18 @@ class MainApp extends Component {
           <HeaderContainer />
           <Navigation />
           <main className="app__main">
-            <Routes>
-              <Route path="/dialogs" element={<DialogsContainer />} />
-              <Route path="/profile/:id" element={<ProfileContainer />} />
-              <Route path="/users" element={<UsersContainer />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="*" element={<div>404 Page not found</div>} />
-            </Routes>
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                <Route path="/dialogs" element={<DialogsContainer />} />
+                {["/profile", "/profile/:id"].map((path) => (
+                  <Route key={path} path={path} element={<ProfileContainer />} />
+                ))}
+                <Route path="/users" element={<UsersContainer />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<h1>Hello!</h1>} />
+                <Route path="*" element={<div>404 Page not found</div>} />
+              </Routes>
+            </Suspense>
           </main>
         </div>
       );
