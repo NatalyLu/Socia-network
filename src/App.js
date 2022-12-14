@@ -1,6 +1,6 @@
 import React, { Suspense, Component } from "react";
 import { connect, Provider } from "react-redux";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import "./App.css";
 import store from "./redux/redux-store";
 import { initializeApp } from "./redux/app-reducer";
@@ -54,11 +54,11 @@ const AppContainer = connect(mapStateToProps, { initializeApp })(MainApp);
 const App = () => {
   // <React.StrictMode>
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
   // </React.StrictMode>
 }
