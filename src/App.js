@@ -54,7 +54,7 @@ const AppContainer = connect(mapStateToProps, { initializeApp })(MainApp);
 const App = () => {
   // <React.StrictMode>
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <AppContainer />
       </Provider>
