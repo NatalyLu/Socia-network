@@ -7,6 +7,8 @@ import { initializeApp } from "./redux/app-reducer";
 import HeaderContainer from "./components/header/header-container";
 import Navigation from "./components/navigation/navigation";
 import Loader from "./components/loader/loader";
+import Main from "./components/main/main";
+import Unknown from "./components/unknown/unknown";
 
 const DialogsContainer = React.lazy(() => import("./components/dialogs/dialogs-container"));
 const ProfileContainer = React.lazy(() => import("./components/profile/profile-container"));
@@ -34,8 +36,8 @@ class MainApp extends Component {
                 ))}
                 <Route path="/users" element={<UsersContainer />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/" element={<h1>Hello!</h1>} />
-                <Route path="*" element={<div>404 Page not found</div>} />
+                <Route path="/" element={<Main />} />
+                <Route path="*" element={<Unknown />} />
               </Routes>
             </Suspense>
           </main>
