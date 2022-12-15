@@ -20,12 +20,23 @@ code {
     monospace;
 }
 
+.visually-hidden {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
 .submit {
   font-size: 1rem;
+  font-weight: 700;
   align-self: flex-start;
   padding: 7px 20px;
+  color: #ffffff;
   background-color: #e7aa10;
-  border: 1px solid #5a4d23;
+  border: none;
   box-shadow: 1px 1px 2px 0 #5a4d23;
   border-radius: 4px;
   transition: .1s linear;

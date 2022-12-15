@@ -16,4 +16,28 @@
 .profile__avatar {
   width: 150px;
   height: 150px;
+  margin-bottom: 30px;
+}
+
+.profile__file {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.profile__file label {
+  position: relative;
+  padding: 10px 20px 10px 40px;
+}
+
+.profile__file label:before {
+  content: "";
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  top: calc(50% - 12px);
+  left: 10px;
+  background-image: url("../../images/download.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
 }

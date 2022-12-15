@@ -44,6 +44,16 @@ const profileReducer = (state = initialState, action) => {
       };
     case Actions.SET_STATUS:
       return { ...state, status: action.status };
+    case Actions.SET_PHOTO_SUCCESS:
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.photos },
+      };
+    case Actions.TOGGLE_IS_FETCHING_PHOTO:
+      return {
+        ...state,
+        isFetchingPhoto: action.value,
+      };
     default:
       return state;
   }
@@ -54,6 +64,8 @@ export const addPost = (post) => ({ type: Actions.ADD_POST, post });
 export const deletePost = (postId) => ({ type: Actions.DELETE_POST, postId });
 export const setUserProfile = (profile) => ({type: Actions.SET_USER_PROFILE, profile,});
 export const setStatus = (status) => ({type: Actions.SET_STATUS, status,});
+export const savePhotoSuccess = (photos) => ({type: Actions.SET_PHOTO_SUCCESS, photos});
+export const toggleIsFetchingPhoto = (value) => ({type: Actions.TOGGLE_IS_FETCHING_PHOTO, value});
 
 export const getProfileThunkCreator = (id) => async (dispatch) => {
   dispatch(toggleIsFetching(true));
@@ -75,6 +87,16 @@ export const updateStatus = (status) => async (dispatch) => {
   if (response.data.resultCode === 0) {
     dispatch(setStatus(status));
   }
+};
+
+export const savePhoto = (photo) => async (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  const response = await profileAPI.savePhoto(photo);
+
+  if (response.data.resultCode === 0) {
+    dispatch(savePhotoSuccess(response.data.data.photos));
+  }
+  dispatch(toggleIsFetching(false));
 };
 
 export default profileReducer;

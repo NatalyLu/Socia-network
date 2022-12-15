@@ -11,7 +11,14 @@ const Profile = (props) => {
         ? <Loader /> 
         : props.profile 
             ? <>
-                <ProfileInfo styles={s} profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+                <ProfileInfo
+                  styles={s}
+                  profile={props.profile}
+                  status={props.status}
+                  updateStatus={props.updateStatus}
+                  isOwner={props.isOwner}
+                  savePhoto={props.savePhoto}
+                  isFetchingPhoto={props.isFetchingPhoto} />
                 <PostsContainer />
               </>
             : <ErrorBlock />
