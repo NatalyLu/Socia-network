@@ -8,6 +8,7 @@ export const Actions = {
   SET_STATUS: "profile/SET_STATUS",
   SET_PHOTO_SUCCESS: "profile/SET_PHOTO_SUCCESS",
   TOGGLE_IS_FETCHING_PHOTO: "profile/TOGGLE_IS_FETCHING_PHOTO",
+  TOGGLE_IS_FETCHING_PROFILE_DATA: "profile/TOGGLE_IS_FETCHING_PROFILE_DATA",
 
   SEND_MESSAGE: "dialogs/SEND_MESSAGE",
 
@@ -40,10 +41,14 @@ export const DialogSymbols = {
   MAX: 50,
 };
 
+export const PROFILE_FORM_FIELD_MAX_LENGTH = 100;
+
 export const Errors = {
   DIALOG_TEXTAREA_ERROR: `Message's length must be more then ${DialogSymbols.MIN} symbols, but less then ${DialogSymbols.MAX}`,
   PASSWORD_ERROR: `Password is required and must contain at least ${InputSymbols.MIN} symbols, but no more then ${InputSymbols.MAX}`,
   POST_TEXTAREA_ERROR: `Post's length must be more then ${TextareaSymbols.MIN} symbols and less then ${TextareaSymbols.MAX}.`,
+  PROFILE_FIELD_TOO_LONG: `Length must be less then ${PROFILE_FORM_FIELD_MAX_LENGTH} symbols.`,
+  DEFAULT_ERROR: 'Please enter a valid data',
 };
 
 export const PathLinks = {
