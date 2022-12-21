@@ -23,3 +23,20 @@
 .input::placeholder {
   color: rgba(90, 77, 35, 0.4);
 }
+
+.textarea {
+  resize: none;
+  height: 150px;
+  border: 1px solid #5a4d23;
+  border-radius: 4px;
+}
+
+.input.error,
+.textarea.error {
+  border-color: #b21313;
+}
+
+.textarea:focus,
+.input:focus {
+  outline: none;
+}

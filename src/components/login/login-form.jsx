@@ -38,9 +38,9 @@ const LoginForm = ({login}) => {
 
 return(
     <form className={s.login} onSubmit={handleSubmit(FormSubmitClickHandle)}>
-      <Field errors={errors} registerObj={emailRegisterObj} placeholder="Email" fieldName={fieldEmailName} clearErrors={clearErrors}>Enter your email</Field>
+      <Field type="email" errors={errors} registerObj={emailRegisterObj} placeholder="Email" fieldName={fieldEmailName} clearErrors={clearErrors}>Enter your email</Field>
 
-      <Field errors={errors} registerObj={passwordRegisterObj} placeholder="Password" fieldName={fieldPasswordName} clearErrors={clearErrors} errorMessage={Errors.PASSWORD_ERROR}>Enter your password</Field>
+      <Field type="password" errors={errors} registerObj={passwordRegisterObj} placeholder="Password" fieldName={fieldPasswordName} clearErrors={clearErrors} errorMessage={Errors.PASSWORD_ERROR}>Enter your password</Field>
 
       <div className={s.login__checkbox}>
           <input {...register("rememberMe")} type="checkbox" id="remember"></input>

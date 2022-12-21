@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import {useForm} from "react-hook-form";
+import Field from "../field/field";
 import s from "./textarea-form.module.css";
 
-const TextareaForm = ({submitHandler, fieldName, registerObj, placeholder, errorText, buttonText, mode}) => {
+const TextareaForm = ({children, submitHandler, fieldName, registerObj, placeholder, errorText, buttonText, mode}) => {
   const {
     register,
     handleSubmit,
@@ -22,13 +23,14 @@ const TextareaForm = ({submitHandler, fieldName, registerObj, placeholder, error
 
   return(
     <form onSubmit={handleSubmit(formSubmitHandler)} className={s.form}>
-      <textarea
-        className={`textarea ${errors[fieldName] && "error"}`}
-        {...register(fieldName , {...registerObj})}
+      <Field
+        type="textarea"
+        errors={errors}
+        fieldName={fieldName}
+        registerObj={{ ...register(fieldName, {...registerObj}) }}
         placeholder={placeholder}
-      ></textarea>
-      
-      {errors[fieldName] && <p className="text-error">{errorText}</p>}
+        errorMessage={errorText}
+      >{children}</Field>
       
       <button type="submit" className="submit" disabled={!isValid}>{buttonText}</button>
     </form>

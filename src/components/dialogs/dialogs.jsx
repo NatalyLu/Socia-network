@@ -16,6 +16,7 @@ const Dialogs = (props) => {
       <div className={`${s.dialogs__messages} ${s.messages}`}>
         <Messages messages={props.dialogs.messages} />
         <TextareaForm
+          mode="onChange"
           submitHandler={addMessageHandler}
           fieldName="newMessage"
           registerObj={registerObj}

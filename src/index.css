@@ -83,14 +83,6 @@ code {
   background-color: #e8e3e3;
 }
 
-.textarea {
-  resize: none;
-  height: 150px;
-  margin-bottom: 20px;
-  border: 1px solid #5a4d23;
-  border-radius: 4px;
-}
-
 .loader {
   width: 25px;
   height: 25px;
@@ -113,18 +105,9 @@ code {
 
 .text-error {
   color: #b21313;
+  margin: 0;
 }
 
 button:disabled {
   opacity: .5;
-}
-
-.input.error,
-.textarea.error {
-  border-color: #b21313;
-}
-
-.textarea:focus,
-.input:focus {
-  outline: none;
 }
