@@ -4,10 +4,10 @@ import s from "./field.module.css";
 const Field = ({children, type, errors, registerObj, placeholder, fieldName, clearErrors, errorMessage}) => {
   if (type === "checkbox") {
     return(
-      <label className={s.label}>
+      <label className={s.labelCheckbox}>
         {children}
         <input
-          className={`${s.checkbox}`}
+          className={s.checkbox}
           type={type}
           {...registerObj}
           name={fieldName}
