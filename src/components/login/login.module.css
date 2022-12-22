@@ -10,6 +10,11 @@
   color: #5a4d23;
 }
 
+.login__captcha {
+  width: 100%;
+  object-fit: contain;
+}
+
 .login__checkbox label {
   position: relative;
   padding-left: 40px;

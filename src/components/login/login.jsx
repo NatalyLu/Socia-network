@@ -19,6 +19,7 @@ const Login = ({isAuth, id, ...props}) => {
 
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
+  captchaUrl: state.auth.captchaUrl,
   id: state.auth.id
 })
 

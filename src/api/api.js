@@ -35,13 +35,13 @@ export const authAPI = {
   getAuth() {
     return instance.get("auth/me").then((data) => data);
   },
-  login(email, password, rememberMe = false) {
+  login(email, password, rememberMe = false, captcha = null) {
     return instance
-      .post("/auth/login", { email, password, rememberMe })
+      .post("/auth/login", { email, password, rememberMe, captcha })
       .then((data) => data);
   },
   logout() {
-    return instance.delete("/auth/login")
+    return instance.delete("/auth/login");
   },
 };
 
@@ -71,5 +71,11 @@ export const profileAPI = {
     return instance 
       .put("profile", profile)
       .then((data) => data);
+  }
+};
+
+export const securityAPI = {
+  getCaptchaUrl() {
+    return instance.get("security/get-captcha-url").then((data) => data);
   }
 };

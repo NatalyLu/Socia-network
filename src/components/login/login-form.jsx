@@ -3,25 +3,24 @@ import { Errors, InputSymbols } from "../../const";
 import Field from "../common/field/field";
 import s from "./login.module.css";
 
-const LoginForm = ({login}) => {
+const LoginForm = ({login, captchaUrl}) => {
   const {
     register,
     handleSubmit,
     setError,
     clearErrors,
     formState: { errors, isValid },
-    reset,
   } = useForm({
     mode: "onChange"
   });
 
   const FormSubmitClickHandle = (data) => {
-    login(data.email, data.password, data.rememberMe, setError);
-    reset();
+    login(data.email, data.password, data.rememberMe, data.captcha, setError);
   };
 
   const fieldEmailName="email";
   const fieldPasswordName="password";
+  const fieldCaptchaName="captcha";
   const emailRegisterObj= {...register(fieldEmailName, { 
     required: true,
     pattern: {
@@ -46,6 +45,10 @@ return(
           <input {...register("rememberMe")} type="checkbox" id="remember"></input>
           <label htmlFor="remember">Remember me</label>
       </div>
+
+      {captchaUrl && <img className={s.login__captcha} src={captchaUrl} width="100" height="100" alt="Captcha" />}
+      {captchaUrl && <Field type="text" errors={errors} registerObj={{...register(fieldCaptchaName)}} placeholder="Enter symbols from the image" fieldName={fieldCaptchaName} clearErrors={clearErrors} />}
+      
       <button className={s.login__submit} type="submit" disabled={!isValid}>Login</button>
       {errors.server && <p className="text-error">{errors.server.message}</p>}
     </form>

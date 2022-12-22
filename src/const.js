@@ -22,6 +22,7 @@ export const Actions = {
 
   TOGGLE_IS_FETCHING_AUTH: "auth/TOGGLE_IS_FETCHING",
   SET_USER_DATA: "auth/SET_USER_DATA",
+  GET_CAPTCHA_URL_SUCCESS: "auth/GET_CAPTCHA_URL_SUCCESS",
 };
 
 export const PORTION_OF_PAGES = 10;
