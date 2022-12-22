@@ -22,7 +22,7 @@
 .profile__file {
   display: flex;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .profile__file label {
@@ -40,4 +40,70 @@
   background-image: url("../../images/download.svg");
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.profile__details {
+  margin-bottom: 50px;
+}
+
+.profile__details b {
+  margin-right: 5px;
+}
+
+.profile__details b + ul {
+  margin-top: 10px;
+}
+
+.profile__mainList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style-type: none;
+  margin: 0 0 30px 0;
+  padding: 0;
+}
+
+.profile__subList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.profile__title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.profile__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;margin: 0;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.profile__errors {
+  margin-bottom: 50px;
+}
+
+.profile__errors p {
+  margin: 0 0 20px 0; 
+}
+
+.profile__errors ol {
+  margin: 0;
+}
+
+.profile__errors li + li {
+  margin-top: 10px;
 }

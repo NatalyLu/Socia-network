@@ -48,7 +48,8 @@ export const Errors = {
   PASSWORD_ERROR: `Password is required and must contain at least ${InputSymbols.MIN} symbols, but no more then ${InputSymbols.MAX}`,
   POST_TEXTAREA_ERROR: `Post's length must be more then ${TextareaSymbols.MIN} symbols and less then ${TextareaSymbols.MAX}.`,
   PROFILE_FIELD_TOO_LONG: `Length must be less then ${PROFILE_FORM_FIELD_MAX_LENGTH} symbols.`,
-  DEFAULT_ERROR: 'Please enter a valid data',
+  DEFAULT_FIELD_ERROR: 'Please enter a valid data',
+  DEFAULT_ERROR: 'Sorry, but you have some problems:'
 };
 
 export const PathLinks = {

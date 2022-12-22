@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import { compose } from "redux";
 import Profile from "./profile";
-import {getProfileThunkCreator, getStatus, updateStatus, savePhoto} from "../../redux/profile-reducer";
+import {getProfileThunkCreator, getStatus, updateStatus, savePhoto, saveProfileInfo} from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/with-auth-redirect";
 import { withUrlParams } from "../../hoc/with-url-params";
 
@@ -38,10 +38,11 @@ let mapStateToProps = (state) => ({
   authorizedUserId: state.auth.id,
   isAuth: state.auth.isAuth,
   isFetchingPhoto: state.profile.isFetchingPhoto,
+  isFetchingProfileInfo: state.profile.isFetchingProfileInfo,
 });
 
 export default compose(
-  connect(mapStateToProps,{getProfile: getProfileThunkCreator, getStatus, updateStatus, savePhoto}),
+  connect(mapStateToProps,{getProfile: getProfileThunkCreator, getStatus, updateStatus, savePhoto, saveProfileInfo}),
   withUrlParams,
   withAuthRedirect
 )(ProfileWrapper)

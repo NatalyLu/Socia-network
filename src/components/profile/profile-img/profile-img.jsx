@@ -1,4 +1,3 @@
-
 const ProfileImg = ({styles, savePhoto}) => {
 
   const inputFileHandler = (evt) => {
@@ -10,7 +9,7 @@ const ProfileImg = ({styles, savePhoto}) => {
   return (
     <div className={styles.profile__file}>
       <input id="avatar" className="visually-hidden" name="avatar" type="file" accept="image/png, image/jpeg" onChange={inputFileHandler} />
-      <label for="avatar" className="submit">Choose a profile picture</label>
+      <label htmlFor="avatar" className="submit">Choose a profile picture</label>
     </div>
   );
 };

@@ -24,7 +24,7 @@ const Field = ({children, type, errors, registerObj, placeholder, fieldName, cle
           type={type}
           placeholder={placeholder}
         ></textarea>
-        {errors[fieldName] && <p className="text-error">{errors[fieldName].message || errorMessage || Errors.DEFAULT_ERROR}</p>}
+        {errors[fieldName] && <p className="text-error">{errors[fieldName].message || errorMessage || Errors.DEFAULT_FIELD_ERROR}</p>}
       </label>
     )
   }else {
@@ -38,7 +38,7 @@ const Field = ({children, type, errors, registerObj, placeholder, fieldName, cle
           type={type}
           placeholder={placeholder}
         ></input>
-        {errors[fieldName] && <p className="text-error">{errors[fieldName].message || errorMessage || Errors.DEFAULT_ERROR}</p>}
+        {errors[fieldName] && <p className="text-error">{errors[fieldName].message || errorMessage || Errors.DEFAULT_FIELD_ERROR}</p>}
       </label>
     )
   } 

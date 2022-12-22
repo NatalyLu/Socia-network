@@ -18,7 +18,10 @@ const Profile = (props) => {
                   updateStatus={props.updateStatus}
                   isOwner={props.isOwner}
                   savePhoto={props.savePhoto}
-                  isFetchingPhoto={props.isFetchingPhoto} />
+                  isFetchingPhoto={props.isFetchingPhoto}
+                  saveProfileInfo={props.saveProfileInfo}
+                  isFetchingProfileInfo={props.isFetchingProfileInfo}
+                />
                 <PostsContainer />
               </>
             : <ErrorBlock />

@@ -25,7 +25,9 @@ const ProfileStatus = ({status, updateStatus}) => {
         ? <div>
             <input autoFocus className="input" onChange={statusChangeHandler} onBlur={activeEditMode} value={useStateStatus}></input>
           </div>
-        : <span onDoubleClick={activeEditMode}>{status || "No status"}</span>
+        : <div>
+            <b>Status: </b><span onDoubleClick={activeEditMode}>{status || "No status"}</span>
+          </div>
       }
     </div>
   );

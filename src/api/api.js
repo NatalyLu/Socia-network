@@ -66,5 +66,10 @@ export const profileAPI = {
             {headers: {"Content-Type": "multipart/form-data",}}
           )
       .then((data) => data);
+  },
+  saveProfileInfo(profile) {
+    return instance 
+      .put("profile", profile)
+      .then((data) => data);
   }
 };
