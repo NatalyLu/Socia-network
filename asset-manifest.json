@@ -1,35 +1,35 @@
 {
   "files": {
     "main.css": "/Socia-network/static/css/main.ebec4b8c.css",
-    "main.js": "/Socia-network/static/js/main.215a7661.js",
+    "main.js": "/Socia-network/static/js/main.9a011bc3.js",
     "static/css/186.205859ec.chunk.css": "/Socia-network/static/css/186.205859ec.chunk.css",
     "static/js/186.2746c70c.chunk.js": "/Socia-network/static/js/186.2746c70c.chunk.js",
     "static/css/307.2e5fcda6.chunk.css": "/Socia-network/static/css/307.2e5fcda6.chunk.css",
     "static/js/307.04442ff8.chunk.js": "/Socia-network/static/js/307.04442ff8.chunk.js",
     "static/css/691.1719b26f.chunk.css": "/Socia-network/static/css/691.1719b26f.chunk.css",
     "static/js/691.b579680a.chunk.js": "/Socia-network/static/js/691.b579680a.chunk.js",
-    "static/css/644.2f0bbbfc.chunk.css": "/Socia-network/static/css/644.2f0bbbfc.chunk.css",
-    "static/js/644.2eadf14a.chunk.js": "/Socia-network/static/js/644.2eadf14a.chunk.js",
+    "static/css/644.d23b79d6.chunk.css": "/Socia-network/static/css/644.d23b79d6.chunk.css",
+    "static/js/644.c0707bf1.chunk.js": "/Socia-network/static/js/644.c0707bf1.chunk.js",
     "static/js/787.2b0bd88f.chunk.js": "/Socia-network/static/js/787.2b0bd88f.chunk.js",
     "static/js/290.ab42217f.chunk.js": "/Socia-network/static/js/290.ab42217f.chunk.js",
     "static/media/avatar-1.jpg": "/Socia-network/static/media/avatar-1.78fa7afacebffb73db7f.jpg",
     "index.html": "/Socia-network/index.html",
     "static/media/download.svg": "/Socia-network/static/media/download.de1add720eace6615e81.svg",
     "main.ebec4b8c.css.map": "/Socia-network/static/css/main.ebec4b8c.css.map",
-    "main.215a7661.js.map": "/Socia-network/static/js/main.215a7661.js.map",
+    "main.9a011bc3.js.map": "/Socia-network/static/js/main.9a011bc3.js.map",
     "186.205859ec.chunk.css.map": "/Socia-network/static/css/186.205859ec.chunk.css.map",
     "186.2746c70c.chunk.js.map": "/Socia-network/static/js/186.2746c70c.chunk.js.map",
     "307.2e5fcda6.chunk.css.map": "/Socia-network/static/css/307.2e5fcda6.chunk.css.map",
     "307.04442ff8.chunk.js.map": "/Socia-network/static/js/307.04442ff8.chunk.js.map",
     "691.1719b26f.chunk.css.map": "/Socia-network/static/css/691.1719b26f.chunk.css.map",
     "691.b579680a.chunk.js.map": "/Socia-network/static/js/691.b579680a.chunk.js.map",
-    "644.2f0bbbfc.chunk.css.map": "/Socia-network/static/css/644.2f0bbbfc.chunk.css.map",
-    "644.2eadf14a.chunk.js.map": "/Socia-network/static/js/644.2eadf14a.chunk.js.map",
+    "644.d23b79d6.chunk.css.map": "/Socia-network/static/css/644.d23b79d6.chunk.css.map",
+    "644.c0707bf1.chunk.js.map": "/Socia-network/static/js/644.c0707bf1.chunk.js.map",
     "787.2b0bd88f.chunk.js.map": "/Socia-network/static/js/787.2b0bd88f.chunk.js.map",
     "290.ab42217f.chunk.js.map": "/Socia-network/static/js/290.ab42217f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ebec4b8c.css",
-    "static/js/main.215a7661.js"
+    "static/js/main.9a011bc3.js"
   ]
 }
